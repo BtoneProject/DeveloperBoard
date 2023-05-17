@@ -1,5 +1,9 @@
+
 .App {
-  text-align: center;
+  text-align: justify-all;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .App-logo {
@@ -13,7 +17,7 @@
   }
 }
 
-.App-header {
+Header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -28,6 +32,24 @@
   color: #61dafb;
 }
 
+.App Header {
+  padding: 30px;
+  margin-bottom: 50px;
+}
+
+.home-header {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.user-info {
+  display: inline-block;
+  text-align: right;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +58,4 @@
     transform: rotate(360deg);
   }
 }
+
