@@ -20,12 +20,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-web'	//web dependency
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'	//mybatis
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'	//mariadb
+    compileOnly 'org.projectlombok:lombok'	//lombok
+    annotationProcessor 'org.projectlombok:lombok'	//lombok
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'	//tomcat
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'	//test code
 }
 
 tasks.named('test') {
