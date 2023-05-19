@@ -2,10 +2,15 @@ package com.btone.dev.developerborad.controller;
 
 import com.btone.dev.developerborad.service.UserService;
 import com.btone.dev.developerborad.vo.UserVo;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,4 +36,12 @@ public class UserController {
             System.out.println("value = " + value);
         }
     }
+
+    //회원가입
+    @PostMapping("/join")
+    public void insertUser(@RequestBody HashMap<String, String> map)  {
+        userService.insertUser(map);
+    }
+
+
 }

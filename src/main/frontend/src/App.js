@@ -1,8 +1,11 @@
-import './App.css';
+// src/main/frontend/src/App.js
+
+import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from 'react';
+import Modal from "./components/Modal";
 import axios from 'axios';
-import Header from './Header';
+import Header from './components/Header';
 
 function App() {
     const [board, setBoard] = useState([]);

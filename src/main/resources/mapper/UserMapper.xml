@@ -12,4 +12,9 @@
         WHERE ID = #{userInfo.id}
         AND PASSWORD = #{userInfo.password}
     </select>
+
+    <insert id="insertUser" parameterType="hashMap">
+        INSERT INTO USER(ID, PASSWORD, EMAIL, INTRODUCE)
+        VALUE(#{joinInfo.id}, #{joinInfo.password}, #{joinInfo.email}, "기본값");
+    </insert>
 </mapper>
