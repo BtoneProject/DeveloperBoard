@@ -48,6 +48,8 @@ Header {
 .user-info {
   display: inline-block;
   text-align: right;
+  float:right;
+  margin-right:50px;
 }
 
 @keyframes App-logo-spin {

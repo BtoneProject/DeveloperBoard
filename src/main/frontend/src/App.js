@@ -1,22 +1,8 @@
-// src/main/frontend/src/App.js
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-
-function Header() {
-    return (
-        <div className="home-header">
-            <div className="home-title">
-                <h1><a href="/">DeveloperBoard</a></h1>
-            </div>
-            <div className="user-info">
-                <span>로그인</span>
-            </div>
-        </div>
-    );
-}
+import Header from './Header';
 
 function App() {
     const [board, setBoard] = useState([]);

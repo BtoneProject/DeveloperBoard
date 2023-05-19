@@ -4,11 +4,10 @@ import com.btone.dev.developerborad.service.UserService;
 import com.btone.dev.developerborad.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -19,8 +18,17 @@ public class UserController {
     @GetMapping("/userList")
     public String getUserList(Model model) {
         List<UserVo> userList = userService.getUserList();
-
         model.addAttribute("list", userList);
+
         return "userList";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public void login(@RequestBody Map<String, String> inputUserInfo) {
+        UserVo user = userService.login(inputUserInfo);
+
+        for (String value : inputUserInfo.values()) {
+            System.out.println("value = " + value);
+        }
     }
 }

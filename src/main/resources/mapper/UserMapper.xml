@@ -5,4 +5,11 @@
         SELECT *
         FROM USER
     </select>
+
+    <select id="login" parameterType="hashMap" resultType="com.btone.dev.developerborad.vo.UserVo">
+        SELECT *
+        FROM USER
+        WHERE ID = #{userInfo.id}
+        AND PASSWORD = #{userInfo.password}
+    </select>
 </mapper>
