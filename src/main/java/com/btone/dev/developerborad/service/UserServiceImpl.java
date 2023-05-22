@@ -1,5 +1,6 @@
 package com.btone.dev.developerborad.service;
 
+import com.btone.dev.developerborad.common.AES;
 import com.btone.dev.developerborad.mapper.UserMapper;
 import com.btone.dev.developerborad.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void insertUser(HashMap<String, String> map) {
+    public void insertUser(HashMap<String, String> map) throws Exception {
+        //비밀번호 암호화
+        AES aes = new AES();
+        String password = aes.encrypt(map.get("password"));
+        map.put("password", password);
         userMapper.insertUser(map);
     }
 
