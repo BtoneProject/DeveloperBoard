@@ -56,8 +56,9 @@ public class UserController {
 
     //회원가입
     @PostMapping("/join")
-    public void insertUser(@RequestBody HashMap<String, String> map)  {
+    public void insertUser(@RequestBody HashMap<String, String> map) throws Exception {
         userService.insertUser(map);
     }
+
 
 }
