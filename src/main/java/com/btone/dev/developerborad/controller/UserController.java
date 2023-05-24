@@ -60,9 +60,7 @@ public class UserController {
 
     @PostMapping("/duplicate")
     public String duplicate(@RequestBody HashMap<String, String> map){
-
-        String msg = "";
-        return msg;
+        return userService.duplicate(map);
     }
     //MyInfo
     @RequestMapping(value = "/myInfo", method = RequestMethod.POST)

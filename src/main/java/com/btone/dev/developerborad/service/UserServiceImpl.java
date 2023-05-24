@@ -35,10 +35,17 @@ public class UserServiceImpl implements UserService {
         System.out.println("inputUserInfo.get(\"id\") = " + inputUserInfo.get("id"));
         return userMapper.login(inputUserInfo);
     }
+
+    //회원가입 시 아이디 중복 체크
     @Override
-    public UserVo duplicate(HashMap<String, String> map) {
-        return userMapper.duplicate(map);
+    public String duplicate(HashMap<String, String> map) {
+        String msg = "사용 가능한 아이디입니다.";
+        if(userMapper.duplicate(map).getId() != null){
+            msg = "이미 존재하는 아이디입니다.";
+        }
+        return msg;
     }
+    
     public void validateUser(UserVo user) {
         if (user.getId() == null) {
             System.out.println("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");

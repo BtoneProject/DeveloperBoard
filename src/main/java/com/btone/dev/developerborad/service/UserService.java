@@ -12,7 +12,7 @@ public interface UserService {
     List<UserVo> getUserList();
     void insertUser(HashMap<String, String> map) throws Exception;
     UserVo login(Map<String, String> inputUserInfo);
-    UserVo duplicate(HashMap<String, String> map);
+    String duplicate(HashMap<String, String> map);
     // 회원정보 상세
     UserVo userInfo(Map<String, String> userInfo);
     // 회원정보 수정
