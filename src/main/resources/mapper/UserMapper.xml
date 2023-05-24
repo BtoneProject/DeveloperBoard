@@ -17,4 +17,9 @@
         INSERT INTO USER(ID, PASSWORD, EMAIL, INTRODUCE)
         VALUE(#{joinInfo.id}, #{joinInfo.password}, #{joinInfo.email}, "기본값");
     </insert>
+
+    <select id="duplicate" parameterType="hashMap" resultType="com.btone.dev.developerborad.vo.UserVo">
+        SELECT * FROM USER
+        WHERE ID LIKE #{userInfo.id}
+    </select>
 </mapper>

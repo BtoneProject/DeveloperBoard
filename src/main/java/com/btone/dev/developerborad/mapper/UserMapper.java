@@ -13,4 +13,5 @@ public interface UserMapper {
     List<UserVo> getUserList();
     void insertUser(@Param("joinInfo") HashMap<String, String> map);
     UserVo login(@Param("userInfo") Map<String, String> inputUserInfo);
+    UserVo duplicate(@Param("userInfo") HashMap<String, String> map);
 }

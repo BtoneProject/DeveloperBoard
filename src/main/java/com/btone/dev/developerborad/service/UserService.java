@@ -12,4 +12,5 @@ public interface UserService {
     List<UserVo> getUserList();
     void insertUser(HashMap<String, String> map) throws Exception;
     UserVo login(Map<String, String> inputUserInfo);
+    UserVo duplicate(HashMap<String, String> map);
 }

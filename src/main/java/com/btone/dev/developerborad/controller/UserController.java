@@ -28,7 +28,6 @@ public class UserController {
     public String getUserList(Model model) {
         List<UserVo> userList = userService.getUserList();
         model.addAttribute("list", userList);
-
         return "userList";
     }
 
@@ -58,6 +57,13 @@ public class UserController {
     @PostMapping("/join")
     public void insertUser(@RequestBody HashMap<String, String> map) throws Exception {
         userService.insertUser(map);
+    }
+
+    @PostMapping("/duplicate")
+    public String duplicate(@RequestBody HashMap<String, String> map){
+
+        String msg = "";
+        return msg;
     }
 
 

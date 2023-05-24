@@ -3,8 +3,6 @@ package com.btone.dev.developerborad.service;
 import com.btone.dev.developerborad.common.AES;
 import com.btone.dev.developerborad.mapper.UserMapper;
 import com.btone.dev.developerborad.vo.UserVo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +34,10 @@ public class UserServiceImpl implements UserService {
     public UserVo login(Map<String, String> inputUserInfo) {
         System.out.println("inputUserInfo.get(\"id\") = " + inputUserInfo.get("id"));
         return userMapper.login(inputUserInfo);
+    }
+
+    @Override
+    public UserVo duplicate(HashMap<String, String> map) {
+        return userMapper.duplicate(map);
     }
 }
