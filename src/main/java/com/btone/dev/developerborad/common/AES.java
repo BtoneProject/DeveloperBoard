@@ -10,6 +10,7 @@ public class AES {
     private final String key = "01234567890123456789012345678901";
     private final String iv = key.substring(0, 16); // 16byte
 
+    // 암호화 메소드
     public String encrypt(String text) throws Exception {
         Cipher cipher = Cipher.getInstance(alg);
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
@@ -20,6 +21,8 @@ public class AES {
         return Base64.getEncoder().encodeToString(encrypted);
     }
 
+    
+    //복호화 메소드
     public String decrypt(String cipherText) throws Exception {
         Cipher cipher = Cipher.getInstance(alg);
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");

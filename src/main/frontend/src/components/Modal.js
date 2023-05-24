@@ -71,6 +71,14 @@ const Modal = (props) => {
         }
     }
 
+    const duplicate = async () => {
+        await axios.post('/user/duplicate', {
+            id: id,
+        }).then((response) => {
+            console.log(response.data);
+        });
+    }
+
 
     const config = {"Content-Type": 'application/json'};
 
@@ -160,6 +168,8 @@ const Modal = (props) => {
                         {!emailStatus && email != "" && <div class="invalid-input" style={{color: "red"}}>이메일 형식에 맞게 작성해주세요.</div>}
                         <br/>
                         아이디 : <input id="id" type="text" style={{margin:'10px'}} onChange={onChangeid} />
+                        <br/>
+                        <button style={{margin: '10px'}} onClick={duplicate}>아이디 중복 확인</button>
                         {!idStatus && id != "" &&  <div class="invalid-input" style={{color: "red"}}>아이디는 5~12자리이며 <br/> 대소문자와 숫자만 사용 가능합니다.</div>}
                         <br/>
                         패스워드 : <input id="password" type="password" onChange={onChangepwd} />
