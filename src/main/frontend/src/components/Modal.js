@@ -139,7 +139,7 @@ const Modal = (props) => {
                         <br/>
                         아이디 : <input className="id" id="id" type="text" style={{margin: '10px'}}/>
                         <br/>
-                        패스워드 : <input className="pwd" id="password" type="text"/>
+                        패스워드 : <input className="pwd" id="password" type="password"/>
                         <a href={kakaoAuthReqUrl}><img src="/kakao_login_medium.png" style={{width:'73px', height:'37px'}}/></a>
                     </main>
                     <footer>

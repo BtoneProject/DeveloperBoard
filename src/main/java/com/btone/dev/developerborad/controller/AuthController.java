@@ -3,7 +3,6 @@ package com.btone.dev.developerborad.controller;
 import com.btone.dev.developerborad.service.UserService;
 import com.btone.dev.developerborad.vo.KakaoProfile;
 import com.btone.dev.developerborad.vo.OAuthToken;
-import com.btone.dev.developerborad.vo.UserVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -14,6 +13,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 @RestController
@@ -29,9 +29,6 @@ public class AuthController {
 
     @GetMapping("/kakao/callback")
     public @ResponseBody String kakaoCallback(String code) { // data를 리턴해주는 컨트롤러 함수
-        System.out.println("===== authController =====");
-        System.out.println("code value = " + code);
-
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)
         RestTemplate restTemplate = new RestTemplate();
 
@@ -68,7 +65,6 @@ public class AuthController {
             throw new RuntimeException(e);
         }
 
-
         RestTemplate restTemplate2 = new RestTemplate();
 
         // HttpHeader 오브젝트 생성
@@ -101,20 +97,21 @@ public class AuthController {
         // User 오브젝트 : idno, id, password, email, introduce
         UUID garbagePassword = UUID.randomUUID();
 
-        System.out.println("카카오 아이디(번호) : " + kakaoProfile.getId());
-        System.out.println("카카오 이메일 : " + kakaoProfile.getKakao_account().getEmail());
-        System.out.println("==================================");
-        System.out.println("게시판 아이디: " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
-        System.out.println("게시판 이메일: " + kakaoProfile.getKakao_account().getEmail());
-        System.out.println("게시판 패스워드: " + garbagePassword);
+        String id = kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId();
+        String email = kakaoProfile.getKakao_account().getEmail();
+        String password = garbagePassword.toString();
 
-        UserVo userVo = new UserVo();
-        userVo.setId(kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
-        userVo.setEmail(kakaoProfile.getKakao_account().getEmail());
-        userVo.setPassword(garbagePassword.toString());
+        HashMap<String, String> userMap = new HashMap<>();
+        userMap.put("id", id);
+        userMap.put("password", password);
+        userMap.put("email", email);
 
         // 로그인순간 강제로 회원가입
-//        userService.insertUser();
+        try {
+            userService.insertUser(userMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return response2.getBody();
     }

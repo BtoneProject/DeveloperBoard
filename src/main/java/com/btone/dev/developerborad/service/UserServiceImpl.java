@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVo login(Map<String, String> inputUserInfo) {
-        System.out.println("inputUserInfo.get(\"id\") = " + inputUserInfo.get("id"));
         return userMapper.login(inputUserInfo);
     }
 
