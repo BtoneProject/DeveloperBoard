@@ -5,19 +5,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
-function Header() {
-    return (
-        <div className="home-header">
-            <div className="home-title">
-                <h1><a href="/">DeveloperBoard</a></h1>
-            </div>
-            <div className="user-info">
-                <span to="/article">로그인</span>
-            </div>
-        </div>
-    );
-}
+import Header from "./components/Header";
 
 function Home() {
     const [board, setBoard] = useState([]);
