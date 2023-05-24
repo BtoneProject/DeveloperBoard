@@ -68,7 +68,6 @@ public class AuthController {
             throw new RuntimeException(e);
         }
 
-        System.out.println("카카오 액세스 토큰 = " + oAuthToken.getAccess_token());
 
         RestTemplate restTemplate2 = new RestTemplate();
 
