@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String duplicate(HashMap<String, String> map) {
         String msg = "사용 가능한 아이디입니다.";
-        if(userMapper.duplicate(map).getId() != null){
+        if(userMapper.duplicate(map) != null){
             msg = "이미 존재하는 아이디입니다.";
         }
         return msg;
