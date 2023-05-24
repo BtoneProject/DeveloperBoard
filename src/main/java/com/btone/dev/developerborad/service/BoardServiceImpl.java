@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
     @Autowired
-    BoardMapper BoardMapper;
+    BoardMapper boardMapper;
     public List<BoardVo> getBoardList() {
-        return BoardMapper.getBoardList();
+        return boardMapper.getBoardList();
     }
 
+    @Override
+    public void create(Map<String, String> inputBoardInfo) {
+        boardMapper.create(inputBoardInfo);
+    }
 }

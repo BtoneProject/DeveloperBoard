@@ -53,7 +53,6 @@ public class UserController {
         return "카카오 인증완료";
     }
 
-    //회원가입
     @PostMapping("/join")
     public void insertUser(@RequestBody HashMap<String, String> map) throws Exception {
         userService.insertUser(map);
@@ -64,6 +63,23 @@ public class UserController {
 
         String msg = "";
         return msg;
+    }
+    //MyInfo
+    @RequestMapping(value = "/myInfo", method = RequestMethod.POST)
+    public UserVo myInfo(@RequestBody Map<String, String> userInfo) {
+        return userService.userInfo(userInfo);
+    }
+
+    // 회원정보 수정
+    @PostMapping("/updateUser")
+    public void updateUser(@RequestBody HashMap<String, String> map) {
+        userService.updateUser(map);
+    }
+
+    // 회원정보 삭제
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestBody HashMap<String, String> map) {
+        userService.deleteUser(map);
     }
 
 
