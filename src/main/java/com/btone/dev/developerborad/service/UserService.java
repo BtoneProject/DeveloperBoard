@@ -10,7 +10,7 @@ import java.util.Map;
 @Service
 public interface UserService {
     List<UserVo> getUserList();
-    void insertUser(HashMap<String, String> map);
+    void insertUser(HashMap<String, String> map) throws Exception;
     UserVo login(Map<String, String> inputUserInfo);
 
     // 회원정보 상세

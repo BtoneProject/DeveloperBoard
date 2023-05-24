@@ -3,6 +3,8 @@ import Modal from "./Modal";
 import { Link } from 'react-router-dom'
 
 function Header() {
+
+
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
@@ -21,6 +23,7 @@ function Header() {
                 <div className="user-info">
                     <React.Fragment>
                         <button onClick={openModal} className="btn btn-primary login">로그인</button>
+
                         <Modal open={modalOpen} close={closeModal} login="1"/>
                     </React.Fragment>
                     <Link to="/userInfo">

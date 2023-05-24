@@ -5,4 +5,23 @@
         SELECT *
         FROM BOARD
     </select>
+
+    <insert id="create" parameterType="hashMap">
+        insert into board (
+               title
+             , content
+             , writer
+             , idno
+             , date
+             , viewcount
+             )
+        select #{boardInfo.title}
+             , #{boardInfo.content}
+             , id
+             , idno
+             , now()
+             , 0
+          from user
+         where idno = #{boardInfo.idno}
+    </insert>
 </mapper>

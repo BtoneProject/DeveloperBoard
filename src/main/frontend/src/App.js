@@ -2,28 +2,36 @@
 
 import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter,Routes,Route} from 'react-router-dom';
-import React, {useEffect, useState} from 'react';
-import Modal from "./components/Modal";
-import axios from 'axios';
-import Header from './components/Header';
+import React from 'react';
+import {MemoryRouter, Route, Link, Routes} from 'react-router-dom';
 import MyInfo from './components/UserInfo';
-import Home from './components/Home';
-import * as PropTypes from "prop-types";
-
-BrowserRouter.propTypes = {children: PropTypes.node};
+import CreateArticle from "./CreateArticle";
+import DetailArticle from "./DetailArticle";
+import Home from "./Home";
 
 function App() {
     return (
-        <BrowserRouter>
-        <div className="App">
-            <Header></Header>
-        </div>
-            <Routes>
-                <Route path="/" element={<Home/>}></Route>
-                <Route path="/userInfo" element={<MyInfo/>}></Route>
-            </Routes>
-        </BrowserRouter>
+        <MemoryRouter>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">홈</Link>
+                        </li>
+                        <li>
+                            <Link to="/article">게시판</Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/article" element={<CreateArticle/>}/>
+                    <Route path="/detail" element={<DetailArticle/>}/>
+                    <Route path="/userInfo" element={<MyInfo/>}></Route>
+                </Routes>
+            </div>
+        </MemoryRouter>
     );
 }
 

@@ -4,10 +4,11 @@ import com.btone.dev.developerborad.vo.BoardVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface BoardService {
 
     List<BoardVo> getBoardList();
-
+    void create(Map<String, String> inputBoardInfo);
 }
