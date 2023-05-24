@@ -17,4 +17,26 @@
         INSERT INTO USER(ID, PASSWORD, EMAIL, INTRODUCE)
         VALUE(#{joinInfo.id}, #{joinInfo.password}, #{joinInfo.email}, "기본값");
     </insert>
+
+    <!-- 회원정보 상세 -->
+    <select id="userInfo" parameterType="hashMap" resultType="com.btone.dev.developerborad.vo.UserVo">
+        SELECT *
+        FROM USER
+        WHERE IDNO = #{loggedInUser.idNo}
+    </select>
+
+    <!-- 회원정보 수정-->
+    <update id="updateUser" parameterType="hashMap">
+        UPDATE INTRODUCE
+        FROM USER
+        WHERE IDNO = #{userInfo.idNo}
+    </update>
+
+    <!-- 회원정보 삭제(탈퇴여부 수정)-->
+    <update id="deleteUser" parameterType="hashMap">
+        UPDATE INTRODUCE
+        FROM USER
+        WHERE IDNO = #{userInfo.idNo}
+    </update>
+
 </mapper>

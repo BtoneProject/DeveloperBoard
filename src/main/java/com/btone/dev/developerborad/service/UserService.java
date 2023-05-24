@@ -12,4 +12,11 @@ public interface UserService {
     List<UserVo> getUserList();
     void insertUser(HashMap<String, String> map);
     UserVo login(Map<String, String> inputUserInfo);
+
+    // 회원정보 상세
+    UserVo userInfo(Map<String, String> userInfo);
+    // 회원정보 수정
+    void updateUser(HashMap<String, String> map);
+    // 회원탈퇴
+    void deleteUser(HashMap<String, String> map);
 }

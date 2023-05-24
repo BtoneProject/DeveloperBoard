@@ -37,10 +37,27 @@ public class UserController {
         }
     }
 
-    //회원가입
     @PostMapping("/join")
-    public void insertUser(@RequestBody HashMap<String, String> map)  {
+    public void insertUser(@RequestBody HashMap<String, String> map) {
         userService.insertUser(map);
+    }
+
+    //MyInfo
+    @RequestMapping(value = "/myInfo", method = RequestMethod.POST)
+    public UserVo myInfo(@RequestBody Map<String, String> userInfo) {
+        return userService.userInfo(userInfo);
+    }
+
+    // 회원정보 수정
+    @PostMapping("/updateUser")
+    public void updateUser(@RequestBody HashMap<String, String> map) {
+        userService.updateUser(map);
+    }
+
+    // 회원정보 삭제
+    @PostMapping("/deleteUser")
+    public void deleteUser(@RequestBody HashMap<String, String> map) {
+        userService.deleteUser(map);
     }
 
 

@@ -45,4 +45,23 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    // 회원정보 상세
+    @Override
+    public UserVo userInfo(Map<String, String> userInfo) {
+//        System.out.println("----------- 데이터 들어오나 확인 " + userInfo);
+        return userMapper.userInfo(userInfo);
+    }
+
+    // 회원정보 수정
+    @Override
+    public void updateUser(HashMap<String, String> map) {
+        userMapper.updateUser(map);
+    }
+
+    // 회원정보 삭제
+    @Override
+    public void deleteUser(HashMap<String, String> map) {
+        userMapper.deleteUser(map);
+    }
+
 }
