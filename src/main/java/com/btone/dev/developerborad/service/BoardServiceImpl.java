@@ -21,4 +21,7 @@ public class BoardServiceImpl implements BoardService {
     public void create(Map<String, String> inputBoardInfo) {
         boardMapper.create(inputBoardInfo);
     }
+
+    @Override
+    public BoardVo getBoardDetail(Map<String, Integer> boardInfo) { return boardMapper.getBoardDetail(boardInfo.get("postNo")); }
 }

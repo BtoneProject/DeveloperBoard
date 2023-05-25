@@ -1,19 +1,48 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
+import axios from "axios";
 
-export default function DetailArticle() {
+const DetailArticle = ({children}) => {
     const location = useLocation();
-    const item = location.state ? location.state.item : null;
+    const postno = location.state ? location.state.postNo : null;
+    const [data, setData] = useState([]);
 
-    if (!item) {
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    if (!postno) {
         return <div>No data available</div>;
     }
+    const fetchData = async () => {
+        try {
+            const response = await axios.post('/board/boardDetail', {postNo : postno});
+            setData(response.data);
+        } catch (error) {
+            console.error('Error fetching data : ' + error);
+        }
+    }
+
     return (
         <div>
             <h1>상세페이지</h1>
-            <h2>게시번호 : {item.postNo}</h2>
-            <h2>제목 : {item.title}</h2>
-            <h4>내용 : {item.content}</h4>
+            <h2>게시번호 : {data.postNo}</h2>
+            <h2>제목 : {data.title}</h2>
+            <h4>내용 : {data.content}</h4>
         </div>
     );
 }
+
+const ErrorBoundary = ({children}) => {
+    try {
+        return children;
+    } catch (error) {
+        return <div>오류: {error.message}</div>;
+    }
+};
+
+export default () => (
+    <ErrorBoundary>
+        <DetailArticle />
+    </ErrorBoundary>
+);
