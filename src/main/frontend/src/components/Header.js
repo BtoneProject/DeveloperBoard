@@ -20,16 +20,26 @@ function Header() {
                 <h1>
                     <Link to="/">DeveloperBoard</Link>
                 </h1>
-                <div className="user-info">
-                    <React.Fragment>
-                        <button onClick={openModal} className="btn btn-primary login">로그인</button>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">홈</Link>
+                        </li>
+                        <li>
+                            <Link to="/article">게시판</Link>
+                        </li>
+                    </ul>
+                    <div className="user-info">
+                        <React.Fragment>
+                            <button onClick={openModal} className="btn btn-primary login">로그인</button>
 
-                        <Modal open={modalOpen} close={closeModal} login="1"/>
-                    </React.Fragment>
-                    <Link to="/userInfo">
-                        <button className="btn btn-primary login">내정보</button>
-                    </Link>
-                </div>
+                            <Modal open={modalOpen} close={closeModal} login="1"/>
+                        </React.Fragment>
+                        <Link to="/userInfo">
+                            <button className="btn btn-primary login">내정보</button>
+                        </Link>
+                    </div>
+                </nav>
             </div>
         </div>
     );

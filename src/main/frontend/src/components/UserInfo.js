@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const UserInfo = () => {
     // 가상의 로그인 사용자 데이터
@@ -39,23 +40,30 @@ const UserInfo = () => {
                     <Form.Label column="lg" lg={2}>
                         이름
                     </Form.Label>
-                    <Col sm="10">
+                    <Col sm="4">
                         <Form.Control plaintext readOnly defaultValue={user.id}/>
+                    </Col>
+                    <Col sm="2">
+                        <Link to="/userUpdate">수정</Link>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                     <Form.Label column="lg" lg={2}>
                         Email
                     </Form.Label>
-                    <Col sm="10">
+                    <Col sm="8">
                         <Form.Control plaintext readOnly defaultValue={user.email}/>
                     </Col>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Group as={Row} className="mb-3" controlId="formPlaintextName">
                     <Form.Label column="lg" lg={2}>
                         한 줄 소개
                     </Form.Label>
-                    <Col sm="10">
+                    <Col sm="4"></Col>
+                    <Col sm="2">
+                        <Link to="/userUpdate">수정</Link>
+                    </Col>
+                    <Col sm="8">
                         <Form.Control as="textarea" rows={3} readOnly defaultValue={user.introduce}/>
                     </Col>
                 </Form.Group>
@@ -63,7 +71,7 @@ const UserInfo = () => {
                     <Form.Label column="lg" lg={2}>
                         회원 탈퇴
                     </Form.Label>
-                    <Col sm="10">
+                    <Col sm="8">
                         <Button variant="danger"> 회원 탈퇴</Button>
                     </Col>
                 </Form.Group>
