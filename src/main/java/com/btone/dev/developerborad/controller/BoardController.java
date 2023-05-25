@@ -2,7 +2,6 @@ package com.btone.dev.developerborad.controller;
 
 import com.btone.dev.developerborad.service.BoardService;
 import com.btone.dev.developerborad.vo.BoardVo;
-import com.btone.dev.developerborad.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,4 +25,7 @@ public class BoardController {
     public void login(@RequestBody Map<String, String> inputBoardInfo) {
         boardService.create(inputBoardInfo);
     }
+
+    @RequestMapping(value = "/boardDetail", method = RequestMethod.POST)
+    public BoardVo getBoardDetail(@RequestBody Map<String, Integer> boardInfo) { return boardService.getBoardDetail(boardInfo); }
 }

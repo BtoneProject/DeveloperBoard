@@ -11,4 +11,5 @@ import java.util.Map;
 public interface BoardMapper {
     List<BoardVo> getBoardList();
     void create(@Param("boardInfo") Map<String, String> inputBoardInfo);
+    BoardVo getBoardDetail(@Param("postNo") int postNo);
 }

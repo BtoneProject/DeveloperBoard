@@ -11,4 +11,5 @@ public interface BoardService {
 
     List<BoardVo> getBoardList();
     void create(Map<String, String> inputBoardInfo);
+    BoardVo getBoardDetail(Map<String, Integer> boardInfo);
 }
