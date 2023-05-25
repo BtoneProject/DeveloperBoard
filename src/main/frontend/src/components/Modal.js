@@ -32,6 +32,7 @@ const Modal = (props) => {
     const [emailStatus, setemailStatus] = useState(false);
     const [password, setpassword] = useState("");
     const [passwordStatus, setpasswordStatus] = useState(false);
+    const [duplicateStatus, setduplicateStatus] = useState(false);
 
     // 아이디 값 가져오면서 validation 체크
     const onChangeid = (e) => {
@@ -76,6 +77,14 @@ const Modal = (props) => {
             id: id,
         }).then((response) => {
             console.log(response.data);
+            if(idStatus){
+                alert(response.data);
+                if(response.data == "사용 가능한 아이디입니다.") {
+                    setduplicateStatus(true);
+                }
+            }else{
+                alert("아이디를 형식에 맞게 작성해주세요.");
+            }
         });
     }
 
@@ -100,7 +109,7 @@ const Modal = (props) => {
 
 
     const validation = () => {
-        if(idStatus && emailStatus && passwordStatus) return true;
+        if(idStatus && emailStatus && passwordStatus && duplicateStatus) return true;
         else return false;
     }
     /*id: id,
@@ -123,7 +132,7 @@ const Modal = (props) => {
                 console.error('Error fetching data : ' + error);
             }
         }else{
-            alert("이메일 , 아이디 , 패스워드 형식에 맞게 작성해주세요.");
+            alert("이메일 , 아이디 , 패스워드 형식을 확인하거나 중복 확인 버튼을 눌러 확인해주세요.");
         }
     }
 

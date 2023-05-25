@@ -4,6 +4,7 @@ import com.btone.dev.developerborad.common.AES;
 import com.btone.dev.developerborad.mapper.UserMapper;
 import com.btone.dev.developerborad.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
@@ -22,9 +26,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void insertUser(HashMap<String, String> map) throws Exception {
+
         //비밀번호 암호화
-        AES aes = new AES();
-        String password = aes.encrypt(map.get("password"));
+//        AES aes = new AES();
+//        String password = aes.encrypt(map.get("password"));
+
+        //spring security로 암호화
+        String password = passwordEncoder.encode(map.get("password"));
         map.put("password", password);
         userMapper.insertUser(map);
     }
@@ -32,6 +40,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVo login(Map<String, String> inputUserInfo) {
+        System.out.println("inputUserInfo.get(\"id\") = " + inputUserInfo.get("id"));
+        UserVo vo = userMapper.login(inputUserInfo);
+        if(passwordEncoder.matches(inputUserInfo.get("password"), vo.getPassword())){
+            System.out.println("비밀번호 일치");
+        }else{
+            System.out.println("비밀번호 다름");
+        }
         return userMapper.login(inputUserInfo);
     }
 

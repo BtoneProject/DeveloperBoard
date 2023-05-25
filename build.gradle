@@ -30,6 +30,7 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'	//tomcat
     testImplementation 'org.springframework.boot:spring-boot-starter-test'	//test code
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.6.7'
 }
 
 tasks.named('test') {
