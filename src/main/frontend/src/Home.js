@@ -28,7 +28,7 @@ function Home() {
             <div className="row row-cols-1 row-cols-md-4 g-4 all-card">
                 {board.map((item) => (
                     <div key={item.postNo} className="col">
-                        <Link to='/detail' state = {{item:item}}>
+                        <Link to='/detail' state = {{postNo:item.postNo}}>
                             <div className="card" style={{height: '450px'}}>
                                 <img
                                     src="https://velog.velcdn.com/images/designc/post/edcb6480-d8b8-4010-b70e-8ce91538a3a9/image.gif"

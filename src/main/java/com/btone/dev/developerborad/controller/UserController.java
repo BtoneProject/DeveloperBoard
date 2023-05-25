@@ -1,5 +1,6 @@
 package com.btone.dev.developerborad.controller;
 
+import com.btone.dev.developerborad.common.AES;
 import com.btone.dev.developerborad.enums.Status;
 import com.btone.dev.developerborad.service.UserService;
 import com.btone.dev.developerborad.vo.Message;
@@ -28,11 +29,21 @@ public class UserController {
     public String getUserList(Model model) {
         List<UserVo> userList = userService.getUserList();
         model.addAttribute("list", userList);
+
         return "userList";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Message> login(@RequestBody Map<String, String> inputUserInfo) {
+        try {
+            String userInputPassword = inputUserInfo.get("password");
+            String passwordInDB = AES.encrypt(userInputPassword);
+
+            inputUserInfo.put("password", passwordInDB);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         UserVo user = userService.login(inputUserInfo);
 
         Message message = new Message();

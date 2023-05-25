@@ -20,7 +20,7 @@ module.exports = function (app) {
     );
 
     app.use(
-        '/oauth',
+        '/auth',
         createProxyMiddleware({
             target: 'http://localhost:8080',
             changeOrigin: true,

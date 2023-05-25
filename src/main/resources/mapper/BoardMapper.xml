@@ -24,4 +24,10 @@
           from user
          where idno = #{boardInfo.idno}
     </insert>
+
+    <select id="getBoardDetail" parameterType="int" resultType="com.btone.dev.developerborad.vo.BoardVo">
+        select *
+          from board
+         where postno = #{postNo}
+    </select>
 </mapper>
