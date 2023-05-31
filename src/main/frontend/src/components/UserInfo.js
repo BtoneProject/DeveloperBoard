@@ -74,6 +74,7 @@ const UserInfo = () => {
                     <Col sm="8">
                         <Button variant="danger"> 회원 탈퇴</Button>
                     </Col>
+                    //임시
                 </Form.Group>
             </Form>
         </Container>
